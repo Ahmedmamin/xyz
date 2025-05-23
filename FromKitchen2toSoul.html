@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FromKitchen2Soul - Kurdish Culinary Heritage</title>
+    <style>
+
+        :root {
+            --primary-color: #7D3C98;
+            --secondary-color: #F1C40F;
+            --accent-color: #D35400;
+            --light-color: #FDEBD0;
+            --dark-color: #2C3E50;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --header-height: 70px; /* Define header height variable */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9f5f0;
+            /* Add padding to account for fixed header */
+            padding-top: var(--header-height);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(44, 4, 68, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0; /* Position at the top */
+            z-index: 1000; /* Ensures it's on top of other elements */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: var(--header-height); /* Set fixed height */
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 100px 0;
+            z-index: 1;
+            text-align: center;
+            /* Increase top padding to account for fixed header */
+            padding-top: calc(100px + var(--header-height));
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/cov3.JPG'); /* replace with your image */
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px);
+            z-index: -1;
+            transform: scale(1.1); /* Prevent edges from showing blur cutoff */
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: #D4AC0D;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6C3483;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+            /* Ensure sections don't start too close to the header */
+            margin-top: 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Feature Cards */
+        .features {
+            background-color: var(--light-color);
+        }
+        
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .feature-card:hover .feature-image img {
+            transform: scale(1.1);
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Recipes Section */
+        .recipes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .recipe-card {
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            z-index: 1; /* Ensure cards appear above other elements except header */
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .recipe-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .recipe-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .recipe-card:hover .recipe-image img {
+            transform: scale(1.1);
+        }
+        
+        .recipe-content {
+            padding: 1.5rem;
+        }
+        
+        .recipe-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0.5rem 0;
+        }
+        
+        .tag {
+            background-color: var(--light-color);
+            color: var(--accent-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .testimonials .section-title {
+            color: white;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .testimonial {
+            scroll-snap-align: start;
+            min-width: 300px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            flex: 1;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Blog Section */
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .blog-post {
+            width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .blog-post:hover .blog-image img {
+            transform: scale(1.1);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--light-color);
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .newsletter p {
+            margin-bottom: 2rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-form input {
+            padding: 0.8rem 1rem;
+            width: 100%;
+            max-width: 350px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #6C3483;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            /* Adjust header height for mobile */
+            :root {
+                --header-height: 110px;
+            }
+            
+            body {
+                padding-top: var(--header-height);
+            }
+        }
+        .search-input {
+            display: block;
+            margin: 0 auto 10px auto;
+            padding: 10px;
+            width: 290px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: black;
+            border: none;
+            border-radius: 50%;  /* Make the button circular */
+            padding: 0;  /* Remove padding to ensure proper centering */
+            font-size: 30px;  /* Adjust font size to fit inside the circle */
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            transition: opacity 0.3s;
+            width: 60px;  /* Set the width */
+            height: 60px; /* Set the height */
+            text-align: center;
+            line-height: 60px; /* Vertically center the text inside the button */
+            z-index: 999; /* Ensure it's above other elements */
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .blog-content {
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .blog-description {
+            overflow: hidden;
+            max-height: 100px; /* Adjust for initial preview */
+            transition: max-height 0.5s ease;
+            text-align: center;
+        }
+
+        .blog-description.expanded {
+            max-height: 1000px; /* Large enough to show all text */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">From<span>Kitchen2</span>Soul</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="KurdishRecipes.html">Recipes</a></li>
+                    <li><a href="foodsStory.html">Stories</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <!-- Search Field (No Button) -->
+            <input type="search" name="query" placeholder="Search for foods..." class="search-input">
+
+            <h1>Food that feeds the Heart!</h1>
+            <p>Discover the soul-nourishing traditions of Kurdish cuisine and its power to heal, connect, and bring joy</p>
+            <div class="hero-buttons">
+                <a href="#recipes" class="btn">Explore Recipes</a>
+                <a href="#stories" class="btn btn-primary">Read Stories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+    <div class="container">
+        <h2 class="section-title">Our Mission</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="images/Kurdish National Food.JPG" alt="Kurdish traditional cooking">
+            </div>
+            <div class="about-text">
+                <p>FromKitchen2Soul پلاتفۆرمێکی دیجیتاڵی تایبەتە بە پاراستن و پێشخستنی میراتی چێشتلێنان لە کوردستان عێراق. ئێمە پێمان وایە خۆراک تەنها ڕزق و ڕۆزی نییە بەڵکو میدیایەکی بەهێزە کە نەوەکان بەیەکەوە دەبەستێتەوە و ناسنامەی کولتووری دەپارێزێت و هەم جەستە و هەم ڕۆح خۆراک دەدات.
+ئەرکی ئێمە بەڵگەنامەکردنی ڕێچکەی ڕەسەنی کوردییە، هاوبەشکردنی چیرۆکەکانی پشت خواردنە نەریتییەکان و گەڕان بەدوای پەیوەندی قووڵی نێوان خواردن و خۆشگوزەرانی سۆزداری و ناسنامەی کولتووری.
+لە ڕێگەی پلاتفۆرمەکەمانەوە ئامانجمان دروستکردنی کۆمەڵگەیەکی جیهانییە کە ئاهەنگ بگێڕێت بۆ تامە دەوڵەمەندەکانی کوردستان لە هەمان کاتدا پەروەردەکردنی لێکتێگەیشتن و قەدرزانی و چاکبوونەوەی سۆزداری لە ڕێگەی زمانی گشتگیری خۆراکەوە.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">Why Kurdish Cuisine Matters</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="/api/placeholder/400/300" alt="Cultural Heritage">
+                    </div>
+                    <div class="feature-content">
+                        <h3>میراتی ڕۆشنبیری</h3>
+                        <p>خواردنی کوردی نوێنەرایەتی هەزاران ساڵ مێژوو و خۆڕاگری و نەریت دەکات و هەر خواردنێک چیرۆکێکی سەفەری گەلەکەمان دەگێڕێتەوە</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="/api/placeholder/400/300" alt="Emotional Well-being">
+                    </div>
+                    <div class="feature-content">
+                        <h3>خۆراکدانی سۆزداری</h3>
+                        <p>لە دەرەوەی خۆراکی جەستەیی، خواردنە نەریتییەکانمان ئاسوودەیی و پەیوەندی و هەستکردن بە سەربەخۆیی دەبەخشن کە باشبوونی سۆزداری پەروەردە دەکات.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="/api/placeholder/400/300" alt="Community Building">
+                    </div>
+                    <div class="feature-content">
+                        <h3>بیناسازی کۆمەڵگا</h3>
+                        <p>خۆراک مرۆڤەکان کۆدەکاتەوە، فەزای هاوبەشکردن و ئاهەنگگێڕان و بەهێزکردنی پەیوەندییەکان لەناو خێزان و کۆمەڵگاکاندا دروست دەکات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section class="section" id="recipes">
+        <div class="container">
+            <h2 class="section-title">Traditional Kurdish Recipes</h2>
+            <div class="recipes-container">
+                <!-- Original 3 cards -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="images/soup.JPEG" alt="شۆربا">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center ;font-size: 30px;">شۆربا</h3>
+                        <p style="text-align: center;">شۆربای خواردنێکی گەرم و ئاسوودەبەخشە کە بە کوڵاندنی پێکهاتەکانی وەک سەوزە، گۆشت، یان پەلەوەری لەناو شۆربا یان ئاودا دروست دەکرێت.</p>
+                        <br>
+                        <p style="text-align: center;"><a href="page1.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="images/BreakFast.JPG" alt=" ژەمی بەیانیان">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center ;font-size: 30px;"> ژەمی بەیانیان</h3>
+                        <p style="text-align: center;">نانی بەیانی یەکەم ژەمی ڕۆژە، بە شێوەیەکی ئاسایی بەیانیان دەخورێت بۆ ئەوەی وزەت پێبدرێت دوای شەوێک لە ڕۆژووگرتن.</p>
+                        <br><br>
+                        <p style="text-align: center;"><a href="page2.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="images/XSaraki.JPG" alt="خواردنی سەرەکی">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center ;font-size: 30px;">خواردنی سەرەکی</h3>
+                        <p style="text-align: center;">ژەمە سەرەکییەکان، وەک ژەمی نیوەڕۆ و ئێوارە، ژەمە سەرەکییەکان و جەوهەریترن لە ڕۆژەکەدا، زۆرجار تێکەڵەیەکی هاوسەنگ لە پرۆتین و سەوزە و دانەوێڵەیان تێدایە.</p>
+                       <br>
+                        <p style="text-align: center;"><a href="page3.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+    
+                <!-- Hidden extra cards -->
+                <div class="recipe-card extra-card" style="display: none;">
+                    <div class="recipe-image">
+                        <img src="images/shirini.JPEG" alt="شیرینی">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center ;font-size: 30px;">شیرینی</h3>
+                        <p style="text-align: center;">شیرینی بریتییە لە خواردنی شیرین کە بە شێوەیەکی گشتی لە کۆتایی ژەمێکدا پێشکەش دەکرێت، لە کێک و شیرینیەوە تا پودین و خواردنی میوە.</p>
+                        <br>
+                       <p style="text-align: center;"> <a href="page4.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+    
+                <div class="recipe-card extra-card" style="display: none;">
+                    <div class="recipe-image">
+                        <img src="images/Xwardnawa.JPG" alt="خواردنەوە">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center ;font-size: 30px;"> خواردنەوە</h3>
+                        <p style="text-align: center;">خواردنەوەکان بریتین لەو شلانەی کە بۆ کوژاندنەوەی تینوێتی، تەواوکەری ژەمەکان، یان دابینکردنی تازەگەری دەخورێن، لە ئاو و شەربەتەوە تا چا و قاوە و خواردنەوە گازییەکان.</p>
+                        
+                       <p style="text-align: center;"> <a href="page5.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+    
+                <div class="recipe-card extra-card" style="display: none;">
+                    <div class="recipe-image">
+                        <img src="images/Salad.JPG" alt="Nani Khubz">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center ;font-size: 30px;">زەڵاتە</h3>
+                        <p style="text-align: center;">زەڵاتە خواردنێکی تازە و گشتگیرە کە بە تێکەڵەیەک لە سەوزە و سەوزەی گەڵادار و هەندێکجار میوە، دانەوێڵە، یان پرۆتین دروست دەکرێت</p>
+                        <br>
+                        <p style="text-align: center;"><a href="page6.html" class="btn">بینینی ڕێچکەکان</a></pp>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Button -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="KurdishRecipes.html" class="btn btn-primary" id="showMoreBtn">Explore All Recipes</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Script to show more cards -->
+   
+    
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="stories">
+        <div class="container">
+            <h2 class="section-title">Food Stories</h2>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "دەستەکانی داپیرەم سەمایان دەکرد کاتێک دۆلمای بۆ کۆبوونەوە خێزانییەکانمان ئامادە دەکرد. من تەنها ڕێچکەیەکم لێ فێر نەبووم، مێژوو و سەبر و زمانی خۆشەویستیمان فێربووم کە لە ڕێگەی خواردنەوە قسەی پێدەکرێت."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/Shirin.JPG" alt="Shirin">
+                        </div>
+                        <div class="author-info">
+                            <h4>Shirin Ahmed</h4>
+                            <p>Erbil, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "لە کاتە سەختەکاندا بۆنی بریانی دایکم ماڵەکەمانی پڕ دەکرد لە ئاسوودەیی و هیوا. ئێستا کاتێک بۆ منداڵەکانم ئامادەی دەکەم، تەنها خۆراکیان پێ نادەم- خۆڕاگری و خۆشی دەگوازمەوە."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/Rzgar.JPG" alt="Rizgar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rizgar Karim</h4>
+                            <p>Sulaymaniyah, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "دروستکردنی کوبا لەگەڵ دراوسێکانم پەیوەندییەکی دروستکردووە کە زمان تێدەپەڕێنێت. چیرۆکی گوندەکانمان بەیەکەوە دەبەستینەوە، پێکەوە پێدەکەنین و برینە کۆنەکان چاک دەکەینەوە لە ڕێگەی ئەو کردارە سادەیەی کە پێکەوە خواردن ئامادە دەکەین."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/Layla.JPG" alt="Layla">
+                        </div>
+                        <div class="author-info">
+                            <h4>Layla Osman</h4>
+                            <p>Duhok, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="foodsStory.html" class="btn">Share Your Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section" id="blog">
+        <div class="container">
+            <h2 class="section-title">Food for Thought</h2>
+            <div class="blog-container">
+                <div class="blog-post">
+                    <div class="blog-image">
+                        <img src="FoodForThought_image/Healing Food.JPG" alt="Healing Foods">
+                    </div>
+
+                    <div class="blog-content">
+                       <div class="blog-date">١٥ی نیسانی ٢٠٢٥</div>
+                       <h3>شیفا لە ڕێگەی خواردنە کوردەوارییە نەریتیەکانەوە</h3>
+                       <p class="blog-description">شیفاکردن لە ڕێگەی خواردنە نەریتییەکانی کوردییەوە بەدواداچوون بۆ کوالیتی خۆراکی و چاککەرەوەی خواردنەکان دەکات کە بە نەوەکاندا دەگوازرێنەوە. دەوڵەمەندە بە گیا و پەلەوەری و کەرەستەی سروشتی، خواردنی کوردی جەخت لەسەر هاوسەنگی و گەرمی و هاوئاهەنگی وەرزی دەکاتەوە. زۆرێک لە ڕێچکە تەقلیدییەکان پێیان وایە پشتگیری لە هەرسکردن دەکەن و بەرگری لەش بەرز دەکەنەوە و باشبوونی گشتی بەرەوپێش دەبەن. ئەم ڕێبازە چێشتلێنانەش ڕەنگدانەوەی پەیوەندییەکی قووڵە لە نێوان خۆراک و تەندروستی و ناسنامەی کولتووری لە کۆمەڵگا کوردەکاندا. </p>
+                       <a href="#" class="btn read-more-btn">زیاتر بخوێنەرەوە</a>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="blog-image">
+                        <img src="FoodForThought_image/seasonalCoocking.JPG" alt="Seasonal Cooking">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">١٠ی نیسانی ٢٠٢٥</div>
+                        <h3>چێشت لێنان وەرزی لە کوردستان: چاپی بەهار</h3>
+                        <p class="blog-description">چێشت لێنان بە وەرزی لە کوردستان لە وەرزی بەهاردا ئاهەنگ دەگێڕێت بە پێکهاتە تازە و کێوییەکانی ناوچەکە وەک بادەمی سەوز و گەڵاکانی ترێ و بڕێکی زۆر لە گیای وەک سیری کێوی و زەنجەفیل. خواردنە نەریتییەکان تیشک دەخەنە سەر تازەیی، لەوانە دۆلما کە بە گەڵای ترێی ناسک دروستکراوە و نیسکان کە شۆربای دەوڵەمەندە بە گیا. زۆرجار خەڵکی ناوچەکە لە لادێکاندا خۆراک دەدۆزنەوە، ڕووەکی کێوی دەخەنە ناو ژەمەکانیانەوە وەک ڕێوڕەسمێکی بەهاریی بەنرخ. خواردنی ئەم وەرزە ڕەنگدانەوەی پەیوەندییەکی قووڵە بە سروشت و میراتی کولتووری کوردییەوە.</p>
+                        <a href="#" class="btn read-more-btn">زیاتر بخوێنەرەوە</a>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="blog-image">
+                        <img src="FoodForThought_image/Food Traditions.JPG" alt="Food Traditions">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">٥ی نیسانی ٢٠٢٥</div>
+                        <h3>ڕۆڵی خۆراک لە ئاهەنگەکانی کورددا</h3>
+                        <p class="blog-description">خواردن ڕۆڵێکی سەرەکی دەگێڕێت لە ئاهەنگەکانی کورددا، هێمای میوانداری و کۆمەڵایەتی و میراتی کولتوورییە. خواردنە نەریتییەکانی وەک دۆلمە و کەباب و برنجی لەگەڵ زەعفەران زۆرجار بە ڕێژەیەکی زۆر ئامادە دەکرێن و لە نێوان خێزان و میوانەکاندا هاوبەش دەکرێن. لە میانی فێستیڤاڵەکانی وەک نەورۆز (سەری ساڵی کوردی) ژەمە تایبەتەکان دەکوڵێنرێن بۆ یادی ئەو بۆنەیە و کۆکردنەوەی خەڵک. ئەم کۆبوونەوانە پەیوەندییە کۆمەڵایەتییەکان پتەوتر دەکەن و یارمەتی پاراستنی نەریتی چێشتلێنانەکانی کوردی دەدەن لە سەرانسەری نەوەکاندا.</p>
+                        <a href="#" class="btn read-more-btn">زیاتر بخوێنەرەوە</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn btn-primary">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container newsletter-content">
+            <h2>Join Our Community</h2>
+            <p>Subscribe to receive traditional recipes, heartwarming stories, and updates on Kurdish culinary events.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p>We respect your privacy and will never share your information.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>FromKitchen2Soul</h3>
+                <p>پاراستن و ئاهەنگ گێڕان بە میراتی چێشتلێنان کوردی بۆ خۆشگوزەرانی سۆزداری و پەیوەندی کولتووری.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" class="social-link">
+                        <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/" class="social-link">
+                        <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="Instagram">
+                    </a>
+                    <a href="https://twitter.com/" class="social-link">
+                        <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter">
+                    </a>
+                    <a href="https://www.youtube.com/" class="social-link">
+                        <img src="https://cdn-icons-png.flaticon.com/24/733/733646.png" alt="YouTube">
+                    </a>
+                </div>
+                
+            </div>
+            <div class="footer-col">
+                <h3>لینکی خێرا</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">ماڵەوە</a></li>
+                    <li><a href="#about">دەربارەی ئێمە</a></li>
+                    <li><a href="#recipes">ڕێچکەکان</a></li>
+                    <li><a href="#stories">چیرۆکەکان</a></li>
+                    <li><a href="#blog">بلۆگ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>سەرچاوەکان</h3>
+                <ul class="footer-links">
+                    <li><a href="#">تەکنیکەکانی چێشت لێنان</a></li>
+                    <li><a href="#">ڕێنمایی پێکهاتەکان</a></li>
+                    <li><a href="#">ساڵنامەی وەرزی</a></li>
+                    <li><a href="#">مەکۆکانی کۆمەڵگە</a></li>
+                    <li><a href="#">ڕووداوەکان</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>پەیوەندیمان پێوە بکەن</h3>
+                <ul class="footer-links">
+                    <li>ئیمەیڵ: info@fromkitchen2soul.com</li>
+                    <li>تەلەفۆن: +964 750 123 4567</li>
+                    <li>هەولێر، هەرێمی کوردستان، عێراق</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; ٢٠٢٥ لە کیچن2سۆڵەوە. هەموو مافەکان پارێزراوە.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" title="Go to top">︿</button>
+
+
+    <script>
+        // Simple JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Get the button
+let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+// Show the button when the user scrolls down
+window.onscroll = function () {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+// Scroll to the top when the button is clicked
+scrollToTopBtn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+//read actiondocument.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.read-more-btn');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const card = this.closest('.blog-content');
+          const desc = card.querySelector('.blog-description');
+
+          desc.classList.toggle('expanded');
+          this.textContent = desc.classList.contains('expanded') ? 'کەمتر بخوێنەرەوە' : 'زیاتر بخوێنەرەوە';
+        });
+      });
+    
+
+    </script>
+</body>
+</html>

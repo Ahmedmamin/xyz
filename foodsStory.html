@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdish Food Stories</title>
+    <style>
+        :root {
+            --primary-color: #7D3C98;
+            --secondary-color: #F1C40F;
+            --accent-color: #D35400;
+            --light-color: #FDEBD0;
+            --dark-color: #2C3E50;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --header-height: 70px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9f5f0;
+            padding-top: var(--header-height);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: var(--header-height);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            margin-top: 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Food Stories Section */
+        .testimonials {
+            background-color: #f9f5f0;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background-color: #6C3483;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: white;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-10px);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            min-height: 150px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            background-color: #f1f1f1;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: #D4AC0D;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            z-index: 999;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            :root {
+                --header-height: 110px;
+            }
+            
+            body {
+                padding-top: var(--header-height);
+            }
+            
+            .testimonials-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .testimonial {
+                min-width: 250px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                Food <span>Stories</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="FromKitchen2toSoul.html">Home</a></li>
+                    <li><a href="KurdishRecipes.html">Recipes</a></li>
+                    <li><a href="foodsStory.html">Stories</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Food Stories Section -->
+    <section class="section testimonials" id="stories">
+        <div class="container">
+            <h2 class="section-title">Traditional Kurdish Food Stories</h2>
+            <div class="testimonials-container">
+                <!-- Original 3 Stories -->
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "دەستەکانی داپیرەم سەمایان دەکرد کاتێک دۆلمای بۆ کۆبوونەوە خێزانییەکانمان ئامادە دەکرد. من تەنها ڕێچکەیەکم لێ فێر نەبووم، مێژوو و سەبر و زمانی خۆشەویستیمان فێربووم کە لە ڕێگەی خواردنەوە قسەی پێدەکرێت."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/Shirin.JPG" alt="Shirin">
+                        </div>
+                        <div class="author-info">
+                            <h4>Shirin Ahmed</h4>
+                            <p>Erbil, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "لە کاتە سەختەکاندا بۆنی بریانی دایکم ماڵەکەمانی پڕ دەکرد لە ئاسوودەیی و هیوا. ئێستا کاتێک بۆ منداڵەکانم ئامادەی دەکەم، تەنها خۆراکیان پێ نادەم- خۆڕاگری و خۆشی دەگوازمەوە."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/Rzgar.JPG" alt="Rizgar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rizgar Karim</h4>
+                            <p>Sulaymaniyah, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "دروستکردنی کوبا لەگەڵ دراوسێکانم پەیوەندییەکی دروستکردووە کە زمان تێدەپەڕێنێت. چیرۆکی گوندەکانمان بەیەکەوە دەبەستینەوە، پێکەوە پێدەکەنین و برینە کۆنەکان چاک دەکەینەوە لە ڕێگەی ئەو کردارە سادەیەی کە پێکەوە خواردن ئامادە دەکەین."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/Layla.JPG" alt="Layla">
+                        </div>
+                        <div class="author-info">
+                            <h4>Layla Osman</h4>
+                            <p>Duhok, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4 New Stories -->
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "هەموو جارێک کە گەلاخە دروست دەکەم، بیر دەکەمەوە چۆن باپیرم ئەم خواردنە سەرەتاییەی وەک گەنجینەیەک لە نەوەیەکەوە بۆ نەوەیەکی تر پاراستووە. خواردن تەنها بۆ تێرکردنی برسێتی نییە، بەڵکو ڕەگی قووڵی کەلتوورەکەمان و ناسنامەمانە."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/hawkar.JPG" alt="Hawkar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Hawkar Mohammed</h4>
+                            <p>Halabja, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "لە تاراوگەدا، دەستکردن بە ناسناز و یاپراخ، تەنها خواردن دروست ناکەم – هەموو جارێک بڕێک لە نیشتمانەکەم دروست دەکەمەوە. بۆنەکەی منداڵەکانم دەباتەوە بۆ کوردستان، بۆ ئەو شوێنەی کە هەرگیز نەیبینیوە، بەڵام لە دڵیاندا هەستی پێدەکەن."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/sirwan.JPG" alt="Sirwan">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sirwan Rashid</h4>
+                            <p>Toronto, Canada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "کلێچەی دایکم نهێنی ئەوەی هەیە کە خۆشەویستی تێکەڵ دەکات. کاتێک دەستم کرد بە فێربوونی دروستکردنی لە سەردەمی پەتاکەدا، سەربەستی و سەربەخۆییەکم دۆزییەوە کە هەرگیز چاوەڕوانم نەکردبوو. ئێستا هەر کاتێک ئامادەی دەکەم، هەست بە پەیوەندی و پاڵپشتی نەوەکان دەکەم."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/tara.JPG" alt="Tara">
+                        </div>
+                        <div class="author-info">
+                            <h4>Tara Jamal</h4>
+                            <p>Kirkuk, Kurdistan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "سااڵنێکی زۆر وابوو کە نەمتوانی بگەڕێمەوە بۆ گوندەکەم. کاتێک سفرەی خانوویەکی گەرمم دروست کرد بۆ یەکەم جار لەم ماڵە نوێیەدا لەگەڵ هاوڕێ نوێکانم، لە شادی گریام. خواردنەکەمان پێکەوە گرێ دەدات، تەنانەت کاتێک هەزاران میل دوورین لە ماڵ."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="Story_image/aras.JPG" alt="Aras">
+                        </div>
+                        <div class="author-info">
+                            <h4>Aras Sabir</h4>
+                            <p>Berlin, Germany</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="taza.html" class="btn btn-primary">Share Your Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">︿</button>
+
+    <script>
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        
+        window.addEventListener("scroll", function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+        
+        scrollToTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>زەڵاتە</title>
+  <style>
+    :root {
+      --primary-color: #7D3C98;
+      --secondary-color: #F1C40F;
+      --accent-color: #D35400;
+      --light-color: #FDEBD0;
+      --dark-color: #2C3E50;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --header-height: 80px; /* Added header height variable */
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      /* Add padding to body to account for fixed header */
+      padding-top: var(--header-height);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* Make header fixed */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      box-sizing: border-box;
+      z-index: 1000; /* Ensure header stays on top */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .logo span {
+      margin-left: 8px;
+    }
+
+    .logo:hover {
+      color: var(--accent-color);
+    }
+
+    .logo .span {
+      color: var(--secondary-color);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-menu li {
+      margin-left: 15px;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Rest of the styles remain unchanged */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      /* Add margin to ensure content doesn't start right at the header */
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border: 2px solid var(--accent-color);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .card-title {
+      color: var(--primary-color);
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .card-desc {
+      font-size: 0.95em;
+      color: var(--dark-color);
+      text-align: right;
+      margin-bottom: 10px;
+      list-style-position: inside;
+      padding-left: 0;
+      width: 100%;
+    }
+
+    .card-desc li {
+      margin-bottom: 5px;
+      text-align: right;
+      list-style: none;
+    }
+
+    .tag {
+      background-color: var(--light-color);
+      color: var(--accent-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      margin: 0.2rem;
+    }
+
+    .button-group {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .info-button {
+      padding: 8px 12px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .youtube-button {
+      padding: 8px 12px;
+      background-color: #FF0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+    }
+
+    .youtube-button:hover {
+      background-color: #CC0000;
+    }
+
+    .info-button:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Add media query for responsive header on smaller screens */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+      }
+      
+      body {
+        padding-top: 170px; /* Adjust based on your header height on mobile */
+      }
+      
+      .nav-menu {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-menu li {
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="taza.html" class="logo"><span>〱</span><span class="span">Kurdish</span>Recipes</a>
+  <h1>زەڵاتە</h1>
+  <ul class="nav-menu">
+    <li><a href="FromKitchen2toSoul.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="taza.html">Recipes</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
+
+<div class="container">
+  <div class="card">
+    <img src="Zallata_image/Tapula.JPG" alt="Food Item 1" class="card-img" />
+    <h2 class="card-title">زەڵاتەی تەپولە</h2>
+    
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=زەڵاتەی+تەپولە')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc1', ['١ كوپ و نیو ساوەری ورد', '٣ دەسك مەعدەنۆس', '٥ تەماتە', 'نیو كوپ ئاوی لیمۆ', '٢ كەوچكی خواردن زەیتی زەیتون', 'خوێ', 'نیو كەوچكی چا بیبەری سوور', '١ هەنار'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc1', ['ساوەرەكە دەشۆرێت و دەكرێتە ناو ئاو بۆ ماوەی ٣٠ خولەك.', 'مەعدەنۆسەكە دەشۆرێت و ورد دەكرێت هەروەها تەماتەكەش.', 'ساوەرەكە دەردەهێنن و تێكەڵی دەكەن لەگەڵ مەعدەنۆسەكە هەروەها ئاوی لیمۆ و زەیتی زەیتون و بیبەری سوور و هەنار و خوێیەكەش.', 'هەمووی تێكەڵ دەكەن و ئینجا دەتوانن بە زەیتون جوانكاری بۆ بكەن.'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc1">
+      <li>١ كوپ و نیو ساوەری ورد</li>
+      <li>٣ دەسك مەعدەنۆس</li>
+      <li>٥ تەماتە</li>
+      <li>نیو كوپ ئاوی لیمۆ</li>
+      <li>٢ كەوچكی خواردن زەیتی زەیتون</li>
+      <li>خوێ</li>
+      <li>نیو كەوچكی چا بیبەری سوور</li>
+      <li>١ هەنار</li>
+    </ul>
+    <span class="tag">١١٧ کالۆری</span>
+    <span class="tag">٣٠ خولەک</span>
+  </div>
+
+  <div class="card">
+    <img src="Zallata_image/ZallatayKalarm.JPG" alt="Food Item 2" class="card-img" />
+    <h2 class="card-title">زەڵاتەی کەلەرم</h2>
+   
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=زەڵاتەی+کەلەرم')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc2', ['١ كیلۆ كەلەرم', '٣ گێزەر', 'ئاوی لیمۆ یان ١ لیمۆ', 'نیو كوپ كشمش', '٤ كەوچك مایۆنیز', '١ كەوچكی چا خوێ'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc2', ['كەلەرمەكە دەشۆرێت و ورد دەكرێت.', 'گێزەرەكە لە ڕەندە دەدرێت و تێكەڵ دەكرێت بە كەلەرمەكە.', 'مایۆنیز و خوێ و لیمۆ و كشمشەكەی بۆ زیاد دەكرێت.', 'كەرەستەكە تێكەڵ دەكرێت و ئینجا ئامادە دەبێت.'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc2">
+      <li>١ كیلۆ كەلەرم</li>
+      <li>٣ گێزەر</li>
+      <li>ئاوی لیمۆ یان ١ لیمۆ</li>
+      <li>نیو كوپ كشمش</li>
+      <li>٤ كەوچك مایۆنیز</li>
+      <li>١ كەوچكی چا خوێ</li>
+    </ul>
+    <span class="tag">٢٧٠ کالۆری</span>
+    <span class="tag">٢٠ خولەک</span>
+  </div>
+
+  <div class="card">
+    <img src="Zallata_image/ZallatayBainjan.JPG" alt="Food Item 3" class="card-img" />
+    <h2 class="card-title">زەڵاتەی باینجان</h2>
+    
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=زەڵاتەی+باینجان')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc3', ['!به‌م زووانه‌'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc3', ['!به‌م زووانه‌'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc3">
+      <li style="text-align: center;">!به‌م زووانه‌</li>
+    </ul>
+    <span class="tag">کالۆری</span>
+    <span class="tag">خولەك</span>
+  </div>
+
+  <div class="card">
+    <img src="Zallata_image/ZallatayWarzy.JPG" alt="Food Item 4" class="card-img" />
+    <h2 class="card-title">زەڵاتەی وەرزی</h2>
+   
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=زەڵاتەی+وەرزی')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc4', ['!به‌م زووانه‌'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc4', ['!به‌م زووانه‌'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc4">
+      <li style="text-align: center;">!به‌م زووانه‌</li>
+    </ul>
+    <span class="tag">کالۆری</span>
+    <span class="tag">خولەك</span>
+  </div>
+
+  <div class="card">
+    <img src="Zallata_image/ZallatayXaiarBaMast.JPG" alt="Food Item 5" class="card-img" />
+    <h2 class="card-title">زەڵاتەی خەیار بەماست</h2>
+    
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=زەڵاتەی+خەیار+بەماست')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc5', ['!به‌م زووانه‌'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc5', ['!به‌م زووانه‌'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc5">
+      <li style="text-align: center;">!به‌م زووانه‌</li>
+    </ul>
+    <span class="tag">کالۆری</span>
+    <span class="tag">خولەك</span>
+  </div>
+</div>
+
+<script>
+  function showInfo(descId, text) {
+    const descElement = document.getElementById(descId);
+    if (Array.isArray(text)) {
+      // If array, create list items
+      descElement.innerHTML = '';
+      text.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        descElement.appendChild(li);
+      });
+    } else {
+      // Otherwise just set as HTML
+      descElement.innerHTML = text;
+    }
+  }
+</script>
+
+</body>
+</html>

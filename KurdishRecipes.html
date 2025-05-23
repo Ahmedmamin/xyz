@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdish Recipes</title>
+    <style>
+        :root {
+            --primary-color: #7D3C98;
+            --secondary-color: #F1C40F;
+            --accent-color: #D35400;
+            --light-color: #FDEBD0;
+            --dark-color: #2C3E50;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9f5f0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 100px 0;
+            z-index: 1;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px);
+            z-index: -1;
+            transform: scale(1.1);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: #D4AC0D;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6C3483;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Recipes Section */
+        .recipes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .recipe-card {
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .recipe-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .recipe-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .recipe-card:hover .recipe-image img {
+            transform: scale(1.1);
+        }
+        
+        .recipe-content {
+            padding: 1.5rem;
+        }
+        
+        .recipe-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+        }
+        
+        #scrollToTopBtn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                Kurdish <span>Recipes</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="FromKitchen2toSoul.html">Home</a></li>
+                    <li><a href="#recipes">Recipes</a></li>
+                    <li><a href="foodsStory.html">Stories</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+   
+
+    <!-- Recipes Section -->
+    <section class="section" id="recipes">
+        <div class="container">
+            <h2 class="section-title">Traditional Kurdish Recipes</h2>
+            <div class="recipes-container">
+                <!-- Original 3 cards -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="images/soup.JPEG" alt="شۆربا">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center; font-size: 30px;">شۆربا</h3>
+                        <p style="text-align: center;">شۆربای خواردنێکی گەرم و ئاسوودەبەخشە کە بە کوڵاندنی پێکهاتەکانی وەک سەوزە، گۆشت، یان پەلەوەری لەناو شۆربا یان ئاودا دروست دەکرێت.</p>
+                        <br>
+                        <p style="text-align: center;"><a href="page1.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="images/BreakFast.JPG" alt=" ژەمی بەیانیان">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center; font-size: 30px;"> ژەمی بەیانیان</h3>
+                        <p style="text-align: center;">نانی بەیانی یەکەم ژەمی ڕۆژە، بە شێوەیەکی ئاسایی بەیانیان دەخورێت بۆ ئەوەی وزەت پێبدرێت دوای شەوێک لە ڕۆژووگرتن.</p>
+                        <br><br>
+                        <p style="text-align: center;"><a href="page2.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="images/XSaraki.JPG" alt="خواردنی سەرەکی">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center; font-size: 30px;">خواردنی سەرەکی</h3>
+                        <p style="text-align: center;">ژەمە سەرەکییەکان، وەک ژەمی نیوەڕۆ و ئێوارە، ژەمە سەرەکییەکان و جەوهەریترن لە ڕۆژەکەدا، زۆرجار تێکەڵەیەکی هاوسەنگ لە پرۆتین و سەوزە و دانەوێڵەیان تێدایە.</p>
+                       <br>
+                        <p style="text-align: center;"><a href="page3.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+    
+                <!-- Hidden extra cards -->
+                <div class="recipe-card extra-card" style="display: none;">
+                    <div class="recipe-image">
+                        <img src="images/shirini.JPEG" alt="شیرینی">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center; font-size: 30px;">شیرینی</h3>
+                        <p style="text-align: center;">شیرینی بریتییە لە خواردنی شیرین کە بە شێوەیەکی گشتی لە کۆتایی ژەمێکدا پێشکەش دەکرێت، لە کێک و شیرینیەوە تا پودین و خواردنی میوە.</p>
+                        <br>
+                       <p style="text-align: center;"> <a href="page4.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+    
+                <div class="recipe-card extra-card" style="display: none;">
+                    <div class="recipe-image">
+                        <img src="images/Xwardnawa.JPG" alt="خواردنەوە">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center; font-size: 30px;"> خواردنەوە</h3>
+                        <p style="text-align: center;">خواردنەوەکان بریتین لەو شلانەی کە بۆ کوژاندنەوەی تینوێتی، تەواوکەری ژەمەکان، یان دابینکردنی تازەگەری دەخورێن، لە ئاو و شەربەتەوە تا چا و قاوە و خواردنەوە گازییەکان.</p>
+                        
+                       <p style="text-align: center;"> <a href="page5.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+    
+                <div class="recipe-card extra-card" style="display: none;">
+                    <div class="recipe-image">
+                        <img src="images/Salad.JPG" alt="زەڵاتە">
+                    </div>
+                    <div class="recipe-content">
+                        <h3 style="text-align: center; font-size: 30px;">زەڵاتە</h3>
+                        <p style="text-align: center;">زەڵاتە خواردنێکی تازە و گشتگیرە کە بە تێکەڵەیەک لە سەوزە و سەوزەی گەڵادار و هەندێکجار میوە، دانەوێڵە، یان پرۆتین دروست دەکرێت</p>
+                        <br>
+                        <p style="text-align: center;"><a href="page6.html" class="btn">بینینی ڕێچکەکان</a></p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Button -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn btn-primary" id="showMoreBtn">Explore All Recipes</a>
+            </div>
+        </div>
+    </section>
+
+   
+
+
+    <script>
+        // Show more recipes button
+        document.getElementById("showMoreBtn").addEventListener("click", function(e) {
+            e.preventDefault();
+            const hiddenCards = document.querySelectorAll(".extra-card");
+            hiddenCards.forEach(card => card.style.display = "block");
+            this.style.display = "none"; // hide the button after click
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        
+        window.addEventListener("scroll", function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+        
+        scrollToTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+</html>

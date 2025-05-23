@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>شیرینی</title>
+  <style>
+    :root {
+      --primary-color: #7D3C98;
+      --secondary-color: #F1C40F;
+      --accent-color: #D35400;
+      --light-color: #FDEBD0;
+      --dark-color: #2C3E50;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --header-height: 80px; /* Define header height for spacing */
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      padding-top: var(--header-height); /* Add padding equal to header height */
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed; /* Make header fixed */
+      top: 0; /* Position at the top */
+      left: 0; /* Start from the left edge */
+      right: 0; /* Extend to the right edge */
+      z-index: 1000; /* Ensure header stays on top of other content */
+      height: var(--header-height);
+      box-sizing: border-box; /* Include padding in the height calculation */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .logo span {
+      margin-left: 8px;
+    }
+
+    .logo:hover {
+      color: var(--accent-color);
+    }
+
+    .logo .span {
+      color: var(--secondary-color);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-menu li {
+      margin-left: 15px;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--accent-color);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background-color: white;
+      border: 2px solid var(--accent-color);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .card-title {
+      color: var(--primary-color);
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .card-desc {
+      font-size: 0.95em;
+      color: var(--dark-color);
+      text-align: right;
+      margin-bottom: 10px;
+      list-style-position: inside;
+      padding-left: 0;
+      width: 100%;
+    }
+
+    .card-desc li {
+      margin-bottom: 5px;
+      text-align: right;
+      list-style: none;
+    }
+
+    .tag {
+      background-color: var(--light-color);
+      color: var(--accent-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      margin: 0.2rem;
+    }
+
+    .button-group {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .info-button {
+      padding: 8px 12px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .youtube-button {
+      padding: 8px 12px;
+      background-color: #FF0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+    }
+
+    .youtube-button:hover {
+      background-color: #CC0000;
+    }
+
+    .info-button:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Add responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 120px; /* Increase padding for smaller screens */
+      }
+      
+      header {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+      }
+      
+      .nav-menu {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-menu li {
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="taza.html" class="logo"><span>〱</span><span class="span">Kurdish</span>Recipes</a>
+  <h1>شیرینی</h1>
+  <ul class="nav-menu">
+    <li><a href="FromKitchen2toSoul.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="taza.html">Recipes</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
+
+<div class="container">
+  <div class="card">
+    <img src="Shirini_image/Kulicha.JPEG" alt="Food Item 1" class="card-img" />
+    <h2 class="card-title">كولیچه‌</h2>
+    
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=كولیچه‌')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc1', ['١ كوپ ڕۆن', '١ كوپ ئاو', '٤ كوپ ئارد', '٢ كەوچك بیكنگ پاودەر', 'خوێ', 'نیو كەوچكی چا هێل', '١ كەوچكی چا دارچین'])">پێکهاتە</button>
+      <button class="info-button" onclick="showInfo('desc1', ['ارد و خوێ و پیكنگ پاودەر تێكەڵ دەكرێن بەیەكەوە و ئینجا ڕۆنەكەشی بۆ زیاد دەكرێت.', 'ئاویشی تێدەكرێت و جوان دەشێلرێت.', 'دەتوانی بە سادەی یان بە گوێز و خورما بیکەیت هەر یەكێك بەپێی حەزی خۆی شێوەی كولیچەكە ئامادە دەكات.', 'سینیەكی فڕن دەهێنن و بە ڕۆن چەوری دەكەن ئینجا كولیچەكەكانی تێدەكەن.', 'هێلكەیەك لە ناو قاپێك تێكەڵ دەكرێت ئینجا بە فڵچەیەك كولیچەكانی پێ چەور دەكەن.', 'دەخرێتە ناو فڕنێكی گەرم، كە سەرەوە و خوارەوەی برژا ئامادە دەبێت بۆ خواردن.'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc1">
+      <li>١ كوپ ڕۆن</li>
+      <li>١ كوپ ئاو</li>
+      <li>٤ كوپ ئارد</li>
+      <li>٢ كەوچك بیكنگ پاودەر</li> 
+      <li>خوێ</li>
+      <li>نیو كەوچكی چا هێل</li>
+      <li>١ كەوچكی چا دارچین</li>
+    </ul>
+    <span class="tag">٢ کاتژمێر</span>
+    <span class="tag">پارچەیەک ٥٠٠ کالۆری</span>
+  </div>
+
+  <div class="card">
+    <img src="Shirini_image/Kunafa.JPG" alt="Food Item 2" class="card-img" />
+    <h2 class="card-title">كونافه‌</h2>
+   
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=كونافه‌')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc2', ['شیعریەی کونافە', 'پەنیر', 'کەرە', 'یەک پەرداخ شەکر', '٣/٤ پەرداخێک ئاو', 'کەمێک ئاوی لیمۆ'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc2', ['بە کەرە تەواوی شعریەکە چەور بکە، شعریەکە ورد بکە.', 'پاشان بیکە بە دو بەشەوە بەشێکیان لەبنی قاڵبەکەیا دانێن و پەستانی بکە سەر تا بنیشێت.', 'پاشان پەنیرەکە دابنێ بێئەوەی بەر قەراخی قاڵبەکە بکەوێت پاشان بەشی سەرەوە.', 'دواتر لەسەر ١٨٠ سەرو ژێرەی فڕنەکەی بۆ دادەگیرسێنیت و دەخرێتە فڕن تا ئەبرژێ.', 'کە لەفڕن دەرهات بەگەرمی شیلە ساردەکەی دەکرێ بەسەردا پێشکەش دەکرێت.', 'ئەگەر ئارەزووت لێبێت دەتوانیت لە کۆتاییدا فستقی هاڕاو بکەیت بەسەریدا.'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc2">
+      <li>شیعریەی کونافە</li>
+      <li>پەنیر</li>
+      <li>کەرە</li>
+      <li>یەک پەرداخ شەکر</li>
+      <li>٣/٤ پەرداخێک ئاو</li>
+      <li>کەمێک ئاوی لیمۆ</li>
+    </ul>
+    <span class="tag">٨٣٣ کالۆری</span>
+    <span class="tag">٣٠ خولەک</span>
+  </div>
+
+  <div class="card">
+    <img src="Shirini_image/Cake.Qawa.JPEG" alt="Food Item 3" class="card-img" />
+    <h2 class="card-title">كێك به‌ قاوه‌</h2>
+    
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=كێك+به‌+قاوه‌')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc3', ['!به‌م زووانه‌'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc3', ['!به‌م زووانه‌'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc3">
+      <li style="text-align: center;">!به‌م زووانه‌</li>
+    </ul>
+    <span class="tag">کالۆری</span>
+    <span class="tag">خولەك</span>
+  </div>
+
+  <div class="card">
+    <img src="Shirini_image/Muhalaby.JPEG" alt="Food Item 4" class="card-img" />
+    <h2 class="card-title">محه‌له‌بی</h2>
+   
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=محه‌له‌بی')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc4', ['!به‌م زووانه‌'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc4', ['!به‌م زووانه‌'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc4">
+      <li style="text-align: center;">!به‌م زووانه‌</li>
+    </ul>
+    <span class="tag">کالۆری</span>
+    <span class="tag">خولەك</span>
+  </div>
+
+  <div class="card">
+    <img src="Shirini_image/Luqm.JPEG" alt="Food Item 5" class="card-img" />
+    <h2 class="card-title">لوقم</h2>
+    
+    <div class="button-group">
+      <button class="youtube-button" onclick="window.open('https://youtube.com/results?search_query=لوقم')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92922 4.59318 2.50197 4.84824 2.16131 5.19941C1.82066 5.55057 1.57875 5.98541 1.46 6.46C1.14521 8.20556 0.991243 9.97631 1 11.75C0.988773 13.537 1.14279 15.3213 1.46 17.08C1.59075 17.5398 1.83831 17.9581 2.17814 18.2945C2.51798 18.6308 2.93882 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0112 9.96295 22.8572 8.1787 22.54 6.42Z" fill="white"/>
+          <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" fill="#FF0000"/>
+        </svg>
+      </button>
+      <button class="info-button" onclick="showInfo('desc5', ['!به‌م زووانه‌'])">پێکهاتەکان</button>
+      <button class="info-button" onclick="showInfo('desc5', ['!به‌م زووانه‌'])">دروست کردنەکەی</button>
+    </div>
+    <ul class="card-desc" id="desc5">
+      <li style="text-align: center;">!به‌م زووانه‌</li>
+    </ul>
+    <span class="tag">کالۆری</span>
+    <span class="tag">خولەك</span>
+  </div>
+</div>
+
+<script>
+  function showInfo(descId, text) {
+    const descElement = document.getElementById(descId);
+    if (Array.isArray(text)) {
+      // If array, create list items
+      descElement.innerHTML = '';
+      text.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        descElement.appendChild(li);
+      });
+    } else {
+      // Otherwise just set as HTML
+      descElement.innerHTML = text;
+    }
+  }
+</script>
+
+</body>
+</html>
